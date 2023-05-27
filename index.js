@@ -48,7 +48,7 @@ function fetchReply() {
 
             const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
 
-            const respone = await fetch(url, {
+            const response = await fetch(url, {
                 method:'POST',
                 headers: {
                     'content-type': 'text/plain',
@@ -56,7 +56,7 @@ function fetchReply() {
                 body: conversationArr
             })
 
-            const data = await respone.json()
+            const data = await response.json()
             console.log(data)
             
             
