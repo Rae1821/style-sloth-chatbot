@@ -1,15 +1,6 @@
-// import { Configuration, OpenAIApi } from 'openai'
-// import { process } from './env'
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, push, get, remove } from 'firebase/database'
 
-//
-
-// const configuration = new Configuration({
-//     apiKey: process.env.OPENAI_API_KEY,
-// })
-
-// const openai = new OpenAIApi(configuration)
 
 const appSettings = {
     databaseURL: 'https://knowitall-openai-20c96-default-rtdb.firebaseio.com/'
@@ -68,12 +59,7 @@ function fetchReply() {
             const data = await respone.json()
             console.log(data)
             
-            // const response = await openai.createChatCompletion({
-            //     model: 'gpt-3.5-turbo',
-            //     messages: conversationArr,
-            //     presence_penalty: 0,
-            //     frequency_penalty: 0
-            // })
+            
             
             //push(conversationInDb, response.data.choices[0].message)
             //renderTypewriterText(response.data.choices[0].message.content)
