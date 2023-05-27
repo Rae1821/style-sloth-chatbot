@@ -15,7 +15,7 @@ const handler = async (event) => {
                 presence_penalty: 0,
                 frequency_penalty: 0
             })
-    const subject = event.queryStringParameters.name || 'World'
+    
     return {
       statusCode: 200,
       body: JSON.stringify({ 
