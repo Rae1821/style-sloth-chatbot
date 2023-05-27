@@ -50,7 +50,7 @@ document.addEventListener('submit', (e) => {
 
 async function fetchReply() {
 
-    const url = 'https://style-sloth-chatbot.netlify.app/netlify/functions/fetchAI'
+    const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
 
     get(conversationInDb).then(async (snapshot) => {
         if(snapshot.exists()){
