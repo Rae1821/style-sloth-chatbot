@@ -60,9 +60,8 @@ function fetchReply() {
             console.log(data)
             
             
-            
-            //push(conversationInDb, response.data.choices[0].message)
-            //renderTypewriterText(response.data.choices[0].message.content)
+            push(conversationInDb, data.reply.choices[0].message)
+            renderTypewriterText(data.reply.choices[0].message.content)
         } else {
             console.log("no data available")
         }
