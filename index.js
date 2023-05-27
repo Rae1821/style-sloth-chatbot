@@ -50,14 +50,14 @@ document.addEventListener('submit', (e) => {
 
 async function fetchReply() {
 
-    const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
+    const url = 'https://style-sloth-chatbot.netlify.app/netlify/functions/fetchAI'
 
     get(conversationInDb).then(async (snapshot) => {
         if(snapshot.exists()){
             const conversationArr = Object.values(snapshot.val())
             conversationArr.unshift(instructionObj)
 
-            const respone = await fetchReply(url, {
+            const respone = await fetch(url, {
                 method:'POST',
                 headers: {
                     'content-type': 'text/plain',
