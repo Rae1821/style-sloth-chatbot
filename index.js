@@ -48,14 +48,14 @@ document.addEventListener('submit', (e) => {
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight
 })
 
-async function fetchReply() {
-
-    const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
+function fetchReply() {
 
     get(conversationInDb).then(async (snapshot) => {
         if(snapshot.exists()){
             const conversationArr = Object.values(snapshot.val())
             conversationArr.unshift(instructionObj)
+
+            const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
 
             const respone = await fetch(url, {
                 method:'POST',
