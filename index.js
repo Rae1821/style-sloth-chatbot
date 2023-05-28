@@ -59,10 +59,10 @@ function fetchReply() {
             const data = await response.json()
             console.log(data)
             
-            
             push(conversationInDb, data.reply.choices[0].message)
             renderTypewriterText(data.reply.choices[0].message.content)
-        } else {
+        } 
+        else {
             console.log("no data available")
         }
     })

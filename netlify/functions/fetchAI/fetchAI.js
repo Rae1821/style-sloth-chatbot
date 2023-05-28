@@ -11,7 +11,7 @@ const handler = async (event) => {
   try {
     const response = await openai.createChatCompletion({
                 model: 'gpt-3.5-turbo',
-                message: event.body,
+                messages: event.body,
                 presence_penalty: 0,
                 frequency_penalty: 0
             })
@@ -20,7 +20,7 @@ const handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({ 
         reply: response.data
-       })
+       }),
     }
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
