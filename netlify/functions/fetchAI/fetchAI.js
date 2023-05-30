@@ -23,8 +23,11 @@ const handler = async (event) => {
        }),
     }
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    return { statusCode: 500, body: JSON.parse(error) }
   }
 }
 
 module.exports = { handler }
+
+
+//error.toString()
