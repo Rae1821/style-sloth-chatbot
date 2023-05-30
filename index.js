@@ -39,14 +39,9 @@ document.addEventListener('submit', (e) => {
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight
 })
 
-function fetchReply() {
+async function fetchReply() {
 
-    get(conversationInDb).then(async (snapshot) => {
-        if(snapshot.exists()){
-            const conversationArr = Object.values(snapshot.val())
-            conversationArr.unshift(instructionObj)
-
-            const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
+    const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
 
             const response = await fetch(url, {
                 method:'POST',
@@ -61,6 +56,11 @@ function fetchReply() {
             
             push(conversationInDb, data.reply.choices[0].message)
             renderTypewriterText(data.reply.choices[0].message.content)
+
+    get(conversationInDb).then( (snapshot) => {
+        if(snapshot.exists()){
+            const conversationArr = Object.values(snapshot.val())
+            conversationArr.unshift(instructionObj)
         } 
         else {
             console.log("no data available")
