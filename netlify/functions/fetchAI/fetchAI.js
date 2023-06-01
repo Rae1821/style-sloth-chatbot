@@ -11,11 +11,11 @@ const handler = async (event) => {
   try {
     const response = await openai.createChatCompletion({
                 model: 'gpt-3.5-turbo',
-                messages: event.body,
-                presence_penalty: 0,
-                frequency_penalty: 0
+                message: event.body,
+                //presence_penalty: 0,
+                //frequency_penalty: 0
             })
-    
+    const subject = event.queryStringParameters.name || 'World'
     return {
       statusCode: 200,
       body: JSON.stringify({ 
@@ -23,7 +23,7 @@ const handler = async (event) => {
        }),
     }
   } catch (error) {
-    return { statusCode: 500, body: JSON.parse(error) }
+    return { statusCode: 500, body: error.toString() }
   }
 }
 
