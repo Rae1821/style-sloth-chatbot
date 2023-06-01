@@ -64,13 +64,10 @@ function fetchReply() {
         else {
             console.log("no data available")
         }
+
+        push(conversationInDb, data.reply.choices[0].text)
+        renderTypewriterText(data.reply.choices[0].message.content)
     })
-
-
-            push(conversationInDb, data.reply.choices[0].text)
-            renderTypewriterText(data.reply.choices[0].message.content)
-
-    
 }
 
 function renderTypewriterText(text) {
