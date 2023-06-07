@@ -19,12 +19,15 @@ const handler = async (event) => {
     return {
       statusCode: 200,
       body: JSON.stringify({ 
-        reply: response.data
+        reply: console.log(response.data)
        }),
+       
     }
   } catch (error) {
     return { statusCode: 500, body: error.toString() }
   }
+
+ 
 }
 
 module.exports = { handler }
