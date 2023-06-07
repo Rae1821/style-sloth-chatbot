@@ -18,10 +18,7 @@ const instructionObj =
     {
     role: 'system',
     content: 'You are an expert personal stylist who gives easy to follow style advice'
-
 }
-
-
 
 document.addEventListener('submit', (e) => {
     e.preventDefault()
