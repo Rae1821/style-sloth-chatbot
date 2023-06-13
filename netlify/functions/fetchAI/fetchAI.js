@@ -15,16 +15,16 @@ const handler = async (event) => {
                 presence_penalty: 0,
                 frequency_penalty: 0
             })
-    const subject = event.queryStringParameters.name || 'World'
+    //const subject = event.queryStringParameters.name || 'World'
     return {
       statusCode: 200,
       body: JSON.stringify({ 
-        reply: console.log(response.data)
+        reply: response.data
        }),
        
     }
   } catch (error) {
-    return { statusCode: 500, body: error.toString() }
+    return { statusCode: 500 , body: JSON.stringify()}
   }
 
  
@@ -33,4 +33,3 @@ const handler = async (event) => {
 module.exports = { handler }
 
 
-//error.toString()

@@ -51,11 +51,11 @@ function fetchReply() {
                 headers: {
                     'content-type': 'text/plain',
                 },
-                body: conversationArr
+                body: conversationArr.split(' ')
             })
 
             const data = await response.json()
-            console.log(data)
+        
         } 
         else {
             console.log("no data available")
