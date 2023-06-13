@@ -51,20 +51,20 @@ function fetchReply() {
                 headers: {
                     'content-type': 'text/plain',
                 },
-                body: conversationArr
+                body: conversationArr,
             })
 
             const data = await response.json()
             
-            push(conversationInDb, data.reply.choices[0].message)
-            renderTypewriterText(data.reply.choices[0].message.content)
+           
             //console.log(data)
         } 
         else {
             console.log("no data available")
         }
 
-        
+        push(conversationInDb, data.reply.choices[0].message)
+        renderTypewriterText(data.reply.choices[0].message.content)
     })
 }
 

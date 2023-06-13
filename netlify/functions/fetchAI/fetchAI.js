@@ -7,11 +7,11 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration)
 
-const handler = async (e) => {
+const handler = async (event) => {
   try {
-    const response = await openai.createChatCompletion({
+    const response = await openai.createCompletion({
                 model: 'gpt-3.5-turbo',
-                messages: e.body,
+                messages: event.body,
                 presence_penalty: 0,
                 frequency_penalty: 0
             })
@@ -24,10 +24,8 @@ const handler = async (e) => {
        
     }
   } catch (error) {
-    return { statusCode: 500 , body: JSON.stringify()}
+    return { statusCode: 500 , body: error.toString()}
   }
-
- 
 }
 
 module.exports = { handler }
