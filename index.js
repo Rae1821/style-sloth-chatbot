@@ -36,7 +36,6 @@ document.addEventListener('submit', (e) => {
     chatbotConversation.scrollTop = chatbotConversation.scrollHeight
 })
 
-let conversationStr = ''
 
 function fetchReply() {
 
@@ -62,7 +61,7 @@ function fetchReply() {
             console.log("no data available")
         }
 
-        push(conversationInDb, data.reply.choices[0].text)
+        push(conversationInDb, data.reply.choices[0].message)
         renderTypewriterText(data.reply.choices[0].message.content)
     })
 }
