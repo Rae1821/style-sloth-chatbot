@@ -7,11 +7,11 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration)
 
-const handler = async (event) => {
+const handler = async (e) => {
   try {
     const response = await openai.createChatCompletion({
                 model: 'gpt-3.5-turbo',
-                messages: event.body,
+                messages: e.body,
                 presence_penalty: 0,
                 frequency_penalty: 0
             })
