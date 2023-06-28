@@ -41,12 +41,13 @@ document.addEventListener('submit', (e) => {
 
 
 function fetchReply() {
-    const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
 
     get(conversationInDb).then(async (snapshot) => {
         if (snapshot.exists()) {
             const conversationArr = Object.values(snapshot.val())
             conversationArr.unshift(instructionObj)
+    
+            const url = 'https://style-sloth-chatbot.netlify.app/.netlify/functions/fetchAI'
             
             const response = await fetch(url, {
                 method:'POST',
@@ -55,9 +56,9 @@ function fetchReply() {
                 },
                 body: conversationArr,
             })
-            const data = await response.json()
-            push(conversationInDb, data.choices[0].message)
-            renderTypewriterText(data.choices[0].message.content)
+            
+            push(conversationInDb, response.data.choices[0].message)
+            renderTypewriterText(response.data.choices[0].message.content)
         }
     })
 }
