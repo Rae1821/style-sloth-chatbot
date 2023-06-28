@@ -55,8 +55,9 @@ function fetchReply() {
                 },
                 body: conversationArr,
             })
-            push(conversationInDb, response.data.choices[0].message)
-            renderTypewriterText(response.data.choices[0].message.content)
+            const data = await response.json()
+            push(conversationInDb, data.choices[0].message)
+            renderTypewriterText(data.choices[0].message.content)
         }
     })
 }
@@ -79,7 +80,7 @@ function renderTypewriterText(text) {
 
 document.getElementById('clear-btn').addEventListener('click', () => {
     remove(conversationInDb) 
-    chatbotConversation.innerHTML = `<div class="speech speech-ai">How can I help you?</div>`
+    chatbotConversation.innerHTML = `<div class="speech speech-ai">What can I help you style?</div>`
 })
 
 function renderConversationFromDb() {

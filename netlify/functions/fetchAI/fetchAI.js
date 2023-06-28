@@ -2,6 +2,7 @@
 import { Configuration, OpenAIApi } from 'openai'
 
 const configuration = new Configuration({
+    organization: "org-XC0s1PRokBlhgvcw6fyI5iQa",
     apiKey: process.env.OPENAI_API_KEY,
 })
 
@@ -9,7 +10,7 @@ const openai = new OpenAIApi(configuration)
 
 const handler = async (event) => {
   try {
-    const response = await openai.createChatCompletion({
+    const response = await openai.ChatCompletion.create({
                 model: 'gpt-3.5-turbo',
                 messages: event.body,
                 presence_penalty: 0,
